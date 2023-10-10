@@ -40,3 +40,7 @@ dev-repo: "git+https://github.com/ocaml-doc/voodoo.git"
 available: [ os-distribution != "alpine" & arch != "ppc64"]
 # PPC64 fails to build with stack overflow see https://github.com/ocaml/ocaml/issues/11415
 # Alpine-3.16 doesn't have a pandoc package, however 3.17 does
+
+pin-depends: [
+  [ "odoc.dev" "git+https://github.com/tmcgilchrist/odoc.git#b827ee2b50c6dc53c427019d16739715a425d8a1" ]
+]
