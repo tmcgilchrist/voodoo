@@ -43,4 +43,6 @@ available: [ os-distribution != "alpine" & arch != "ppc64"]
 
 pin-depends: [
   [ "odoc.dev" "git+https://github.com/tmcgilchrist/odoc.git#b827ee2b50c6dc53c427019d16739715a425d8a1" ]
+  [ "odoc-bench.dev" "git+https://github.com/tmcgilchrist/odoc.git#b827ee2b50c6dc53c427019d16739715a425d8a1" ]
+  [ "odoc-parser.dev" "git+https://github.com/tmcgilchrist/odoc.git#b827ee2b50c6dc53c427019d16739715a425d8a1" ]
 ]
