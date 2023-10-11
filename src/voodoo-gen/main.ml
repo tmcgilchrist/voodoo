@@ -103,7 +103,11 @@ let generate_pkgver output_dir name_filter version_filter =
             in
             let paths =
               List.rev_map (Rendering.render ~output) files
-              |> List.rev_map Result.get_ok |> List.flatten
+              |> List.filter_map (function
+                     | Ok ok -> Some ok
+                     | Error _error -> None (* TODO What does an error here mean? *))
+              |> List.flatten
+
             in
             let foutput =
               Fpath.v (Odoc_odoc.Fs.Directory.to_string output_dir)
@@ -116,7 +120,7 @@ let generate_pkgver output_dir name_filter version_filter =
             in
 
             Package_info.gen ~input:parent ~output:output_prefix paths;
-            Rendering.render_other ~parent ~otherdocs ~output |> Result.get_ok;
+            Rendering.render_other ~parent ~otherdocs ~output |> Result.failwith_error_msg; (* TODO What does an error here mean? *)
 
             let otherdocs =
               let init = Voodoo_serialize.Status.Otherdocs.empty in
